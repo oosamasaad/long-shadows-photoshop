@@ -1,0 +1,73 @@
+{
+  "manifestVersion": 5,
+  "id": "com.longshadows.studio",
+  "name": "Long Shadows",
+  "version": "0.1.0",
+  "main": "index.html",
+  "icons": [
+    {
+      "width": 48,
+      "height": 48,
+      "path": "icons/plugin-dark.png",
+      "scale": [1],
+      "theme": ["darkest", "dark"],
+      "species": ["generic"]
+    },
+    {
+      "width": 48,
+      "height": 48,
+      "path": "icons/plugin-light.png",
+      "scale": [1],
+      "theme": ["lightest", "light"],
+      "species": ["generic"]
+    }
+  ],
+  "host": {
+    "app": "PS",
+    "minVersion": "24.4.0",
+    "data": {
+      "apiVersion": 2
+    }
+  },
+  "entrypoints": [
+    {
+      "type": "panel",
+      "id": "longShadowsPanel",
+      "label": {
+        "default": "Long Shadows"
+      },
+      "icons": [
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/panel-dark.png",
+          "scale": [1, 2],
+          "theme": ["darkest", "dark"]
+        },
+        {
+          "width": 23,
+          "height": 23,
+          "path": "icons/panel-light.png",
+          "scale": [1, 2],
+          "theme": ["lightest", "light"]
+        }
+      ],
+      "minimumSize": {
+        "width": 280,
+        "height": 1040
+      },
+      "maximumSize": {
+        "width": 1200,
+        "height": 1800
+      },
+      "preferredDockedSize": {
+        "width": 320,
+        "height": 1060
+      },
+      "preferredFloatingSize": {
+        "width": 340,
+        "height": 1060
+      }
+    }
+  ]
+}

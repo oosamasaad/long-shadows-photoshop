@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Long Shadows</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <main class="panel">
+      <header class="app-header">
+        <div class="app-icon" aria-hidden="true">
+          <span class="icon-object"></span>
+          <span class="icon-shadow"></span>
+        </div>
+        <div class="app-title">
+          <h1>Long Shadows</h1>
+          <p>Linked, editable cast shadows</p>
+        </div>
+        <span class="version-pill">BETA</span>
+      </header>
+
+      <section class="source-card">
+        <div class="source-icon" aria-hidden="true"></div>
+        <div class="source-copy">
+          <div class="source-meta">
+            <span>ACTIVE SOURCE</span>
+            <span id="linkState" class="state-pill">READY</span>
+          </div>
+          <strong id="activeLayerName">Nothing selected</strong>
+        </div>
+        <button id="refreshSelection" class="icon-button" title="Refresh active layer">↻</button>
+      </section>
+
+      <section class="preset-bar">
+        <span class="preset-label">QUICK START</span>
+        <div class="preset-buttons">
+          <button id="presetNatural" class="preset-button" data-preset="natural" title="Soft realistic shadow">Natural</button>
+          <button id="presetGraphic" class="preset-button" data-preset="graphic" title="Clean flat long shadow">Graphic</button>
+          <button id="presetDramatic" class="preset-button" data-preset="dramatic" title="Long dramatic cast shadow">Dramatic</button>
+        </div>
+      </section>
+
+      <section class="settings-card">
+        <header class="card-header">
+          <div>
+            <span class="step-number">01</span>
+            <h2>Projection</h2>
+          </div>
+          <button id="resetSettings" class="text-button" title="Reset every control">Reset</button>
+        </header>
+
+        <div class="select-row mode-row">
+          <span>Shadow type</span>
+          <select id="mode">
+            <option value="flat">Flat extrusion</option>
+            <option value="perspective">Perspective</option>
+            <option value="realistic">Realistic cast</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <span class="control-label">Direction</span>
+          <sp-slider id="angle" min="0" max="359" step="1" value="45" show-value="false"></sp-slider>
+          <span id="angleValue" class="control-value">45°</span>
+        </div>
+
+        <div class="control">
+          <span class="control-label">Length</span>
+          <sp-slider id="length" min="1" max="2000" step="1" value="180" show-value="false"></sp-slider>
+          <span id="lengthValue" class="control-value">180 px</span>
+        </div>
+
+        <div id="perspectiveControls" class="subsection">
+          <div class="subsection-label">SHAPE</div>
+          <div class="control">
+            <span class="control-label">Perspective</span>
+            <sp-slider id="perspective" min="-100" max="100" step="1" value="0" show-value="false"></sp-slider>
+            <span id="perspectiveValue" class="control-value">0%</span>
+          </div>
+
+          <div class="control last-control">
+            <span class="control-label">Skew</span>
+            <sp-slider id="skew" min="-100" max="100" step="1" value="0" show-value="false"></sp-slider>
+            <span id="skewValue" class="control-value">0%</span>
+          </div>
+        </div>
+
+        <div id="realisticControls" class="subsection is-hidden">
+          <div class="subsection-label">LIGHT SOURCE</div>
+          <div class="control">
+            <span class="control-label">Light size</span>
+            <sp-slider id="lightSize" min="0" max="100" step="1" value="24" show-value="false"></sp-slider>
+            <span id="lightSizeValue" class="control-value">24%</span>
+          </div>
+
+          <div class="control last-control">
+            <span class="control-label">Contact softness</span>
+            <sp-slider id="contactSoftness" min="0" max="20" step="0.5" value="1" show-value="false"></sp-slider>
+            <span id="contactSoftnessValue" class="control-value">1 px</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="settings-card">
+        <header class="card-header">
+          <div>
+            <span class="step-number">02</span>
+            <h2>Appearance</h2>
+          </div>
+        </header>
+
+        <div class="color-row">
+          <div>
+            <span>Shadow color</span>
+            <small>Opens Photoshop Color Picker</small>
+          </div>
+          <div id="colorSwatch" class="color-well" title="Choose shadow color" role="button" tabindex="0"></div>
+          <input id="color" class="color-value-storage" type="text" value="#171B24" tabindex="-1">
+        </div>
+
+        <div class="control">
+          <span class="control-label">Opacity</span>
+          <sp-slider id="opacity" min="0" max="100" step="1" value="55" show-value="false"></sp-slider>
+          <span id="opacityValue" class="control-value">55%</span>
+        </div>
+
+        <div class="select-row">
+          <span>Blend mode</span>
+          <select id="blendMode">
+            <option value="normal">Normal</option>
+            <option value="dissolve">Dissolve</option>
+            <option value="darken">Darken</option>
+            <option value="multiply">Multiply</option>
+            <option value="colorBurn">Color Burn</option>
+            <option value="linearBurn">Linear Burn</option>
+            <option value="darkerColor">Darker Color</option>
+            <option value="lighten">Lighten</option>
+            <option value="screen">Screen</option>
+            <option value="colorDodge">Color Dodge</option>
+            <option value="linearDodge">Linear Dodge</option>
+            <option value="lighterColor">Lighter Color</option>
+            <option value="overlay">Overlay</option>
+            <option value="softLight">Soft Light</option>
+            <option value="hardLight">Hard Light</option>
+            <option value="vividLight">Vivid Light</option>
+            <option value="linearLight">Linear Light</option>
+            <option value="pinLight">Pin Light</option>
+            <option value="hardMix">Hard Mix</option>
+            <option value="difference">Difference</option>
+            <option value="exclusion">Exclusion</option>
+            <option value="subtract">Subtract</option>
+            <option value="divide">Divide</option>
+            <option value="hue">Hue</option>
+            <option value="saturation">Saturation</option>
+            <option value="color">Color</option>
+            <option value="luminosity">Luminosity</option>
+          </select>
+        </div>
+
+        <div class="control">
+          <span class="control-label">Feather</span>
+          <sp-slider id="feather" min="0" max="100" step="0.5" value="0" show-value="false"></sp-slider>
+          <span id="featherValue" class="control-value">0 px</span>
+        </div>
+
+        <div class="control last-control">
+          <span class="control-label">Distance fade</span>
+          <sp-slider id="fade" min="0" max="100" step="1" value="0" show-value="false"></sp-slider>
+          <span id="fadeValue" class="control-value">0%</span>
+        </div>
+      </section>
+
+      <section class="sync-card">
+        <div class="sync-icon" aria-hidden="true">↻</div>
+        <div class="sync-copy">
+          <strong>Keep shadow linked</strong>
+          <small>Refresh after committed transforms</small>
+        </div>
+        <label class="switch">
+          <input id="autoUpdate" type="checkbox" checked>
+          <span></span>
+        </label>
+      </section>
+
+      <div id="status" class="status info">
+        Select a text, shape, Smart Object, or pixel layer.
+      </div>
+
+      <div class="actions">
+        <button id="createOrUpdate" class="primary-action">Create shadow</button>
+        <button id="detach" class="secondary-action" disabled>Detach</button>
+      </div>
+
+      <p class="editing-note">
+        Masks and layer styling survive updates. Direct edits to generated pixels are replaced.
+      </p>
+    </main>
+  </body>
+</html>

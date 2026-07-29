@@ -1,0 +1,11 @@
+# Packaged release artifacts are uploaded to GitHub Releases.
+*.ccx
+
+# Keep the clean README asset instead of the original exported filename.
+Screenshot 2026-07-30 035443.png
+
+# Local development files.
+.DS_Store
+Thumbs.db
+*.log
+
