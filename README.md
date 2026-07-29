@@ -10,7 +10,7 @@ Create editable long and cast shadows directly inside Adobe Photoshop.
 
 ## Download
 
-**[Download Long Shadows for Photoshop (.ccx)](https://github.com/oosamasaad/long-shadows-photoshop/releases/latest/download/Long%20Shadows.ccx)**
+**[Download Long Shadows for Photoshop (.ccx)](https://github.com/oosamasaad/long-shadows-photoshop/releases/latest/download/Long.Shadows.ccx)**
 
 Current release: **v0.1.0 Beta**
 
